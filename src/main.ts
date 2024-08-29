@@ -12,7 +12,8 @@ async function start() {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup("/api/docs", app, document);
 
-// app.useGlobalGuards(JwtAuthGuard) //guards for  all endpoints
+    // app.useGlobalGuards(JwtAuthGuard) //guards for  all endpoints
+    // app.useGlobalPipes(ValidationPipe) //pipes for  all endpoints
 
     await app.listen(PORT, () => {
         console.log(`Server running on ${PORT}`);

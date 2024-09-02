@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, DataType, Table, Model, BelongsToMany } from "sequelize-typescript";
+import { Column, DataType, Table, Model, BelongsToMany, HasMany } from "sequelize-typescript";
+import { Post } from "src/posts/posts.model";
 import { Role } from "src/roles/role.model";
 import { UserRoles } from "src/roles/user.roles.model";
 
@@ -34,4 +35,8 @@ export class User extends Model<User, UserCreationAttrs> {
     //многие ко многих с использованием промежуточной таблицы userRoles
     @BelongsToMany(() => Role, () => UserRoles)
     roles: Role[];
+
+    //один юзер может иметь много постов
+    @HasMany(() => Post)
+    posts: Post[];
 }
